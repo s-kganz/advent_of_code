@@ -131,6 +131,7 @@ def get_high_score_bfs(init_state):
     Q.append(init_state)
     best_scores[init_state] = init_state.score
     high_score = init_state.score
+    best_state = init_state
 
     while len(Q) > 0:
         cur_state = Q.popleft()
@@ -148,10 +149,12 @@ def get_high_score_bfs(init_state):
             ):
                 Q.append(new_state)
                 best_scores[new_state] = new_state.score
-                high_score = max(high_score, new_state.score)
+                if new_state.score > high_score:
+                    high_score = new_state.score
+                    best_state = new_state
     
     # All paths have been explored, return the max score
-    return high_score
+    return high_score, best_state
 
 
 # Read in data and prune zero-flow valves from the distance matrix
@@ -164,16 +167,22 @@ State.valve_list = list(sorted(valve_dist.keys()))
 State.valve_list.remove(init_valve)
 State.max_time = 30
 
-init_state = State(1, (init_valve, 0), valve_dict, valve_dist)
+init_state_agent1 = State(1, (init_valve, 0), valve_dict, valve_dist)
 
-high_score = get_high_score_bfs(init_state)
+high_score, best_state = get_high_score_bfs(init_state_agent1)
 print("Part 1:", high_score)
 
 # Part 2 - now there are two agents.
 State.max_time = 26
-init_state = State(2, (init_valve, 0), valve_dict, valve_dist)
+init_state_agent1 = State(1, (init_valve, 0), valve_dict, valve_dist)
 
-# path_state = init_state.open_valve("JJ", 0)
-# print(path_state)
-high_score = get_high_score_bfs(init_state)
-print("Part 2:", high_score)
+high_score_agent1, best_state = get_high_score_bfs(init_state_agent1)
+
+# Go through again, ignoring the valves opened by the first agent
+init_state_agent2 = State(1, (init_valve, 0), valve_dict, valve_dist)
+init_state_agent2.valve_state = best_state.valve_state
+
+high_score_agent2, best_state = get_high_score_bfs(init_state_agent2)
+
+print("Part 2:", high_score_agent1 + high_score_agent2)
+
