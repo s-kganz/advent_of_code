@@ -36,10 +36,9 @@ for s in possible_allergens.values():
     maybe_allergens = maybe_allergens.union(s)
 
 # part 1 answer
-'''
 not_allergens = all_ingredients - maybe_allergens
 print(sum(ingredient_counts[ing] for ing in not_allergens))
-'''
+
 while any(len(val) > 1 for val in possible_allergens.values()):
     for key in possible_allergens:
         if len(possible_allergens[key]) == 1:

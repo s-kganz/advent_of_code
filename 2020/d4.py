@@ -28,14 +28,18 @@ while i < len(lines):
             key, val = tuple(entry.split(":"))
             passport[key] = val
         i+=1
-    if set(passport.keys()).issuperset(fields) and \
-       1920 <= int(passport['byr']) <= 2002 and \
-       2010 <= int(passport['iyr']) <= 2020 and \
-       2020 <= int(passport['eyr']) <= 2030 and \
-       validate_height(passport['hgt']) and \
-       validate_hair(passport['hcl']) and \
-       passport['ecl'] in valid_ecl and \
-       validate_pid(passport['pid']): valid_ct+=1
+    # Part 1
+    if set(passport.keys()).issuperset(fields):
+        valid_ct += 1
+    # Part 2
+    # if set(passport.keys()).issuperset(fields) and \
+    #    1920 <= int(passport['byr']) <= 2002 and \
+    #    2010 <= int(passport['iyr']) <= 2020 and \
+    #    2020 <= int(passport['eyr']) <= 2030 and \
+    #    validate_height(passport['hgt']) and \
+    #    validate_hair(passport['hcl']) and \
+    #    passport['ecl'] in valid_ecl and \
+    #    validate_pid(passport['pid']): valid_ct+=1
     i += 1
 
 print(valid_ct)

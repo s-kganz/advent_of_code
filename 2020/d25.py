@@ -1,5 +1,5 @@
-key1 = 5099500
-key2 = 7648211
+key1 = 12320657
+key2 = 9659666
 
 def do_transform(val, subj, divisor):
     val *= subj

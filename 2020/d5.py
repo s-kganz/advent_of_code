@@ -15,6 +15,10 @@ for line in lines:
     seat_id = row * 8 + col
     seen_ids.append(seat_id)
 
+# Part 1
+print(max(seen_ids)) 
+
+# Part 2
 seen_ids.sort()
 for i in range(0, len(seen_ids)-1):
     delta = seen_ids[i+1] - seen_ids[i]

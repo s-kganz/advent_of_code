@@ -25,8 +25,13 @@ for line in f:
         for key in fields:
             for rang in fields[key]:
                 if rang[0] <= value <= rang[1]: is_valid = True
-        if not is_valid: ticket_valid = False
+        if not is_valid: 
+            ticket_valid = False
+            invalid_sum += value
     if ticket_valid: valid_tix.append(this_ticket.copy())
+
+# Part 1
+print(invalid_sum)
 
 def check_in_range(ranges, value):
     return (ranges[0][0] <= value <= ranges[0][1]) or \

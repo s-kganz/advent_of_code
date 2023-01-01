@@ -1,5 +1,5 @@
 lines = list(map(lambda x: int(x.strip()), open("d9_input.txt")))
-target_number = 1309761972
+target_number = 22477624
 
 i = 0
 j = 1

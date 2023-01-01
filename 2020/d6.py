@@ -5,6 +5,9 @@ i = 0
 while i < len(lines):
     answers = set(lines[i])
     while i < len(lines) and lines[i] != "":
+        # Part 1
+        # answers = answers.union(set(lines[i]))
+        # Part 2
         answers = answers.intersection(set(lines[i]))
         i+=1
     q_ct += len(answers)

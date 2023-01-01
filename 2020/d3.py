@@ -14,5 +14,8 @@ def test_slope(drow, dcol):
     
     return tree_ct
 
+# Part 1
+# treeprod = test_slope(1, 3)
+# Part 2
 treeprod = test_slope(1, 1) * test_slope(1, 3) * test_slope(1, 5) * test_slope(1, 7) * test_slope(2, 1)
 print(treeprod)

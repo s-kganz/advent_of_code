@@ -18,6 +18,10 @@ def run_instructions(instructions):
             i += 1
     return acc
 
+# Part 1
+print(run_instructions(lines))
+
+# Part 2
 i = 0
 while i < len(lines):
     if not lines[i].startswith("acc"):
@@ -29,6 +33,7 @@ while i < len(lines):
         result = run_instructions(lines)
         if result is not None: 
             print(result)
+            break
         else:
             lines[i] = old_inst
     i += 1
